@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Download, Github, Linkedin, Instagram, MapPin } from "lucide-react";
-import { Particles } from "@/components/ui/Particles";
 import { site } from "@/data/site";
 
 function scrollTo(href: string) {
@@ -24,7 +23,7 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden px-6 pt-28"
     >
       <div className="absolute inset-0 -z-10">
-        <Particles count={40} />
+        
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.4fr_0.9fr]">

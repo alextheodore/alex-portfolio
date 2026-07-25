@@ -1,5 +1,6 @@
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { AnimatedGrid } from "@/components/ui/AnimatedGrid";
+import { Constellation } from "@/components/ui/Constellation";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -21,6 +22,7 @@ export default function Home() {
       <LoadingScreen />
       <AuroraBackground />
       <AnimatedGrid />
+      <Constellation />
       <CursorGlow />
       <ScrollProgress />
       <Navbar />
