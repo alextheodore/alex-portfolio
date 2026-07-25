@@ -15,18 +15,17 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Cool near-black base — blue undertone, never pure black
         base: {
-          DEFAULT: "#06070A",
-          900: "#06070A",
-          800: "#0A0C12",
-          700: "#0F1219",
-          600: "#151925",
+          DEFAULT: "rgb(var(--c-base) / <alpha-value>)",
+          900: "rgb(var(--c-base) / <alpha-value>)",
+          800: "rgb(var(--c-base-800) / <alpha-value>)",
+          700: "rgb(var(--c-base-700) / <alpha-value>)",
+          600: "rgb(var(--c-base-600) / <alpha-value>)",
         },
         ink: {
-          DEFAULT: "#E7E9EE",
-          muted: "#9AA0B0",
-          faint: "#5B6172",
+          DEFAULT: "rgb(var(--c-ink) / <alpha-value>)",
+          muted: "rgb(var(--c-ink-muted) / <alpha-value>)",
+          faint: "rgb(var(--c-ink-faint) / <alpha-value>)",
         },
         aurora: {
           violet: "#7C5CFF",
@@ -35,7 +34,14 @@ const config: Config = {
           teal: "#2DD4BF",
           magenta: "#C15CFF",
         },
-        line: "rgba(255,255,255,0.08)",
+        line: {
+          DEFAULT: "var(--c-line)",
+          strong: "var(--c-line-strong)",
+        },
+        glass: {
+          DEFAULT: "var(--c-glass)",
+          2: "var(--c-glass-2)",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
@@ -43,20 +49,26 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
-        "hero": ["clamp(2.75rem, 7vw, 6.5rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
-        "section": ["clamp(2rem, 4vw, 3.5rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
+        hero: [
+          "clamp(2.75rem, 7vw, 6.5rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.03em" },
+        ],
+        section: [
+          "clamp(2rem, 4vw, 3.5rem)",
+          { lineHeight: "1.02", letterSpacing: "-0.025em" },
+        ],
       },
       borderRadius: {
         "2xl": "1.25rem",
         "3xl": "1.75rem",
       },
       boxShadow: {
-        glass: "0 1px 0 0 rgba(255,255,255,0.06) inset, 0 20px 60px -20px rgba(0,0,0,0.7)",
+        glass: "var(--shadow-glass)",
         glow: "0 0 60px -12px rgba(124,92,255,0.5)",
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(to bottom, transparent, #06070A 80%)",
+          "linear-gradient(to bottom, transparent, rgb(var(--c-base)) 80%)",
       },
       keyframes: {
         "aurora-drift": {
@@ -64,11 +76,11 @@ const config: Config = {
           "33%": { transform: "translate3d(4%, -3%, 0) rotate(4deg)" },
           "66%": { transform: "translate3d(-3%, 4%, 0) rotate(-4deg)" },
         },
-        "sheen": {
+        sheen: {
           "0%": { backgroundPosition: "0% 50%" },
           "100%": { backgroundPosition: "200% 50%" },
         },
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },
         },
@@ -82,8 +94,8 @@ const config: Config = {
       },
       animation: {
         "aurora-drift": "aurora-drift 18s ease-in-out infinite",
-        "sheen": "sheen 6s linear infinite",
-        "float": "float 6s ease-in-out infinite",
+        sheen: "sheen 6s linear infinite",
+        float: "float 6s ease-in-out infinite",
         "spin-slow": "spin-slow 14s linear infinite",
         "fade-in": "fade-in 0.6s ease forwards",
       },

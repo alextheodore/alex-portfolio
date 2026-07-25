@@ -2,7 +2,7 @@
 
 /**
  * Ambient aurora field: three drifting, blurred gradient blobs over the
- * near-black base. Purely decorative — hidden from assistive tech.
+ * base colour. The blob layer dims in light mode (via --aurora-opacity).
  */
 export function AuroraBackground() {
   return (
@@ -10,12 +10,15 @@ export function AuroraBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-base"
     >
-      {/* Aurora blobs */}
-      <div className="absolute left-[8%] top-[-10%] h-[46rem] w-[46rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(124,92,255,0.55),transparent_60%)] blur-[90px]" />
-      <div className="absolute right-[2%] top-[6%] h-[40rem] w-[40rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.42),transparent_60%)] blur-[100px] [animation-delay:-6s]" />
-      <div className="absolute bottom-[-14%] left-[28%] h-[44rem] w-[44rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(193,92,255,0.32),transparent_62%)] blur-[110px] [animation-delay:-12s]" />
+      <div
+        className="absolute inset-0 transition-opacity duration-500"
+        style={{ opacity: "var(--aurora-opacity)" }}
+      >
+        <div className="absolute left-[8%] top-[-10%] h-[46rem] w-[46rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(124,92,255,0.55),transparent_60%)] blur-[90px]" />
+        <div className="absolute right-[2%] top-[6%] h-[40rem] w-[40rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.42),transparent_60%)] blur-[100px] [animation-delay:-6s]" />
+        <div className="absolute bottom-[-14%] left-[28%] h-[44rem] w-[44rem] animate-aurora-drift rounded-full bg-[radial-gradient(circle_at_center,rgba(193,92,255,0.32),transparent_62%)] blur-[110px] [animation-delay:-12s]" />
+      </div>
 
-      {/* Grain / noise for texture */}
       <div
         className="absolute inset-0 opacity-[0.035] mix-blend-soft-light"
         style={{
@@ -24,8 +27,13 @@ export function AuroraBackground() {
         }}
       />
 
-      {/* Vignette to keep edges deep */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,#06070A_100%)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 55%, rgb(var(--c-vignette)) 100%)",
+        }}
+      />
     </div>
   );
 }

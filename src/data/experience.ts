@@ -19,13 +19,13 @@ export const experiences: Experience[] = [
     summary:
       "Building enterprise-grade banking software and folding AI into core business processes at one of Indonesia's largest banks.",
     points: [
+      "Build AI solutions that automate and augment internal workflows.",
       "Build enterprise applications used across banking operations.",
       "Design backend systems for scale, reliability, and security.",
-      "Build AI solutions that automate and augment internal workflows.",
       "Improve the banking customer experience through better software.",
       "Integrate AI into business processes end to end.",
     ],
-    tags: ["Go", "Backend", "AI", "Enterprise", "Microservices"],
+    tags: ["Backend", "AI", "Enterprise", "Microservices"],
   },
   {
     company: "PT Telkom Indonesia",

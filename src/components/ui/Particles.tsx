@@ -81,7 +81,8 @@ export function Particles({ count = 46 }: { count?: number }) {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="pointer-events-none absolute inset-0 h-full w-full transition-opacity duration-500"
+      style={{ opacity: "var(--particles-opacity)" }}
     />
   );
 }

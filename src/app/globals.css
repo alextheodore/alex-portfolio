@@ -2,8 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------
+   THEME TOKENS — satu sumber warna untuk kedua mode.
+   Triplet (pisah spasi) mendukung <alpha-value> Tailwind.
+   Var rgba() bawa alpha sendiri (glass / hairline / shadow).
+---------------------------------------------------------------- */
 :root {
   color-scheme: dark;
+
+  --c-base: 6 7 10;
+  --c-base-800: 10 12 18;
+  --c-base-700: 15 18 25;
+  --c-base-600: 21 25 37;
+
+  --c-ink: 231 233 238;
+  --c-ink-muted: 154 160 176;
+  --c-ink-faint: 91 97 114;
+
+  --c-glass: rgba(255, 255, 255, 0.03);
+  --c-glass-2: rgba(255, 255, 255, 0.06);
+  --c-line: rgba(255, 255, 255, 0.08);
+  --c-line-strong: rgba(255, 255, 255, 0.22);
+
+  --c-vignette: 6 7 10;
+  --c-grid-line: rgba(255, 255, 255, 0.04);
+  --aurora-opacity: 1;
+  --particles-opacity: 1;
+  --scroll-thumb: rgba(255, 255, 255, 0.12);
+  --scroll-thumb-hover: rgba(255, 255, 255, 0.22);
+
+  --shadow-glass: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 20px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+html.light {
+  color-scheme: light;
+
+  --c-base: 248 249 252;
+  --c-base-800: 255 255 255;
+  --c-base-700: 242 244 248;
+  --c-base-600: 232 235 241;
+
+  --c-ink: 15 18 28;
+  --c-ink-muted: 82 90 106;
+  --c-ink-faint: 132 140 156;
+
+  --c-glass: rgba(255, 255, 255, 0.7);
+  --c-glass-2: rgba(255, 255, 255, 0.9);
+  --c-line: rgba(15, 18, 28, 0.1);
+  --c-line-strong: rgba(15, 18, 28, 0.16);
+
+  --c-vignette: 248 249 252;
+  --c-grid-line: rgba(15, 18, 28, 0.05);
+  --aurora-opacity: 0.4;
+  --particles-opacity: 0.45;
+  --scroll-thumb: rgba(15, 18, 28, 0.18);
+  --scroll-thumb-hover: rgba(15, 18, 28, 0.3);
+
+  --shadow-glass: 0 1px 0 0 rgba(255, 255, 255, 0.85) inset,
+    0 18px 45px -22px rgba(15, 18, 28, 0.22);
 }
 
 @layer base {
@@ -20,24 +77,7 @@
   body {
     @apply bg-base font-sans text-ink antialiased;
     overflow-x: hidden;
-  }
-
-  /* Light theme override — muted, still premium */
-  html.light {
-    color-scheme: light;
-  }
-  html.light body {
-    @apply text-base;
-    background: #f7f8fb;
-  }
-  html.light .text-ink {
-    color: #0a0c12;
-  }
-  html.light .text-ink-muted {
-    color: #545b6b;
-  }
-  html.light .text-ink-faint {
-    color: #8a91a2;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
@@ -45,7 +85,6 @@
     color: #fff;
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -53,17 +92,16 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--scroll-thumb);
     border-radius: 999px;
     border: 2px solid transparent;
     background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--scroll-thumb-hover);
     background-clip: content-box;
   }
 
-  /* Visible keyboard focus */
   :focus-visible {
     outline: 2px solid #22d3ee;
     outline-offset: 2px;
@@ -77,7 +115,6 @@
   }
 }
 
-/* Honour reduced motion globally */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
